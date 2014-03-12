@@ -40,7 +40,7 @@
         	<tr>
         		<td style="padding: 10px 0px 10px 0px">
         			<fieldset style="background-color:#FEC;">
-        			<form  name="input" action="index.php" method="get" id="form1">
+        			<form  name="input" action="customerReg.php" method="get" id="form1">
         				<input type="radio" name="optionView" value="searchOnly" />Search Only<br>
         				<input type="radio" name="optionView" value="newCustomer" />New Customer<br>
         				<input type="radio" name="optionView" value="retCustomer" />Returning Customer<br>

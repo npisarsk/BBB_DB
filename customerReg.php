@@ -34,7 +34,7 @@
     </head>
     <body>
     	<div>
-       	<form name="custReg" method="get" action="index.html">
+       	<form name="custReg" method="get" action="index.php">
        		<table style="text-align: right;" >
        			<tr>
        				<td>Username: </td> <td><input type="text" name="Username" size="12"></td>
