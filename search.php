@@ -57,12 +57,12 @@
         			<fieldset>
         			<form  name="input" action="searchResults.php" method="post" id="form3">
         				Search For:&nbsp; <input type="text" name="searchText" size="15"/>&emsp; <input type="submit" value="Search"><br>
-        				<div class="bubble"><p>Search In:</p><select class="multiSelect" name="searchIn" multiple>
-        					<option selected> Keyword Anywhere </option>
-        					<option> Title </option>
-        					<option> Author </option>
-        					<option> Publisher </option>
-        					<option> ISBN </option>
+        				<div class="bubble"><p>Search In:</p><select class="multiSelect" name="searchIn" multiple style="width:140px;">
+        					<option selected>anywhere </option>
+        					<option> title </option>
+        					<option> author </option>
+        					<option> publisher </option>
+        					<option> isbn </option>
         				</select> 
         					<p><input type="button" value="Manage Shopping Cart" onclick="location.href='shoppingCart.php'"></p></div>
         				<br>
@@ -79,4 +79,5 @@
         		</td>
         	</tr>    	
         </table></div>
+ 	</body>
 </html>

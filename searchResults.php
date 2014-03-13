@@ -45,6 +45,8 @@
 		</style>
     </head>
     <body>
+
+       		
         <div class="frame"><table cellspacing="0" cellpadding="0">
         	<tr align="center">
         		<td>Book Buy (3-B.com)</td>
@@ -58,55 +60,47 @@
         			<form  name="input" action="index.php" method="post" id="form1">
         				<div class="bubble"><p>Your shopping cart has 0 items in it.</p> &emsp; <input type="button" value="Manage shopping cart"></div><br>
         				<div style="overflow-y:scroll; height:200px; border:1px solid black;">
-        					<div style="width:450px; height:75px; border:1px solid black;">
-        						<table>
+        						<?php         
+        							$mysqli = new mysqli("127.0.0.1", "root", "mag89num", "bbb_db_test", 3306);
+        							if ($mysqli->connect_errno) {
+										echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+									}        		
+									$searchText = $_POST['searchText'];
+        							$searchIn = $_POST['searchIn'];
+        							$category = $_POST['category'];
+        							
+        							if($searchIn === "anywhere"){
+										$res = $mysqli->query("SELECT * FROM books WHERE title LIKE '%" . $searchText . "%' OR author LIKE '%" . $searchText . "%' OR publisher LIKE '%" . $searchText . "%' OR isbn LIKE '%" . $searchText . "%'");
+									}
+									else{
+        								$res = $mysqli->query("SELECT * FROM books WHERE " . $searchIn . " LIKE '%" . $searchText . "%'");
+        							}
+        							
+        							//echo "SELECT * FROM books WHERE " . $searchIn . " LIKE '%" . $searchText . "%'";
+									//$res = $mysqli->query("SELECT * FROM books");
+									
+        							$res->data_seek(0);
+        							while ($row = $res->fetch_assoc()) {
+										echo "<div style='width:450px; height:75px; border:1px solid black;'>
+									<table>
         							<tr>
         								<td>
-        									<input type="button" value="Add to Cart" style="margin:5px;"><br>
-        									<input type="button" value="Reviews" style="margin:5px; width:90px;">
+        									<input type='button' value='Add to Cart' style='margin:5px;'><br>
+        									<input type='button' value='Reviews'' style='margin:5px; width:90px;'>
         								</td>
-        								<td>
-        								SQL Server 2000 for experienced DBA's <br>
-        								By: Brian Knight<br>
-        								Publisher: McGraw-Hill Osborne Media, 2003<br>
-        								ISBN: 72227885  &emsp; Price: $34.99<br>
+        								<td>" .
+        								$row['title'] . "<br>
+        								By: " . $row['author'] . "<br>
+        								Publisher: " . $row['publisher'] . "<br>
+        								ISBN: " . $row['isbn'] . "&emsp; Price:  $" . $row['price'] . "<br>
         								</td>
         							</tr>
         						</table>
-        					</div>
-        					<div style="width:450px; height:75px; border:1px solid black;">
-        						<table>
-        							<tr>
-        								<td>
-        									<input type="button" value="Add to Cart" style="margin:5px;"><br>
-        									<input type="button" value="Reviews" style="margin:5px; width:90px;">
-        								</td>
-        								<td>
-        								SQL Server 2000 for experienced DBA's <br>
-        								By: Brian Knight<br>
-        								Publisher: McGraw-Hill Osborne Media, 2003<br>
-        								ISBN: 72227885  &emsp; Price: $34.99<br>
-        								</td>
-        							</tr>
-        						</table>
-        					</div>
-        					<div style="width:450px; height:75px; border:1px solid black;">
-        						<table>
-        							<tr>
-        								<td>
-        									<input type="button" value="Add to Cart" style="margin:5px;"><br>
-        									<input type="button" value="Reviews" style="margin:5px; width:90px;">
-        								</td>
-        								<td>
-        								SQL Server 2000 for experienced DBA's <br>
-        								By: Brian Knight<br>
-        								Publisher: McGraw-Hill Osborne Media, 2003<br>
-        								ISBN: 72227885  &emsp; Price: $34.99<br>
-        								</td>
-        							</tr>
-        						</table>
-        					</div>
-        				</div>
+								</div>";
+
+									}
+       								?>
+       					</div>
         				<br>
         		 			<input type="button" value="Proceed to Checkout" onclick="location.href='shoppingCart.php'">&emsp;
         		 			<input type="button" value="New Search" onclick="location.href='search.php'">&emsp;
