@@ -9,7 +9,7 @@
 			{
 			border:2px solid blue;
 			margin:0 auto;
-			width: 500px;
+			width: 460px;
 			padding-left: 40px;
 			padding-bottom:20px;
 			padding-top:10px;
@@ -43,11 +43,6 @@
 			}
 			
 		</style>
-		<?php
-		function clickExit(){
-			header("Location: index.php");
-		}
-		?>
     </head>
     <body>
         <div class="frame"><table cellspacing="0" cellpadding="0">
@@ -59,9 +54,9 @@
         	</tr>
         	<tr>
         		<td style="padding: 10px 0px 10px 0px">
-        			<fieldset style="background-color:#FEC;">
-        			<form  name="input" action="index.php" method="post" id="form1">
-        				Search For:&nbsp; <input type="text" name="searchText" size="15"/>&emsp; <input type="button" value="Search"><br>
+        			<fieldset>
+        			<form  name="input" action="searchResults.php" method="post" id="form3">
+        				Search For:&nbsp; <input type="text" name="searchText" size="15"/>&emsp; <input type="submit" value="Search"><br>
         				<div class="bubble"><p>Search In:</p><select class="multiSelect" name="searchIn" multiple>
         					<option selected> Keyword Anywhere </option>
         					<option> Title </option>

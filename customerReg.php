@@ -34,7 +34,7 @@
     </head>
     <body>
     	<div>
-       	<form name="custReg" method="post" action="index.php">
+       	<form name="custReg" method="post" action="search.php">
        		<table style="text-align: right;" >
        			<tr>
        				<td>Username: </td> <td><input type="text" name="Username" size="12"></td>
@@ -162,7 +162,8 @@
        		</tr>
        		<tr>
        			<td> &nbsp; </td><td>
-       				<input type="submit" name="register" value="Register"><input type="button" name="cancel" value="Cancel" style="float:none;">
+       				<input type="submit" name="register" value="Register">
+       				<input type="button" value="Cancel" style="float:none;" onclick="location.href='index.php'">
        			</td>
        		</tr>
        	</table>
