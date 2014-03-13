@@ -28,6 +28,15 @@
 				font-size:9pt;
 			}
 		</style>
+		<?php
+		$optionView = isset($_POST['optionView']) ? $_POST['optionView'] : null;
+		if($optionView === "newCustomer"){		
+			header("Location: customerReg.php ");
+		}
+		else if($optionView === "searchOnly"){
+			header("Location: search.php");
+		}
+		?>
     </head>
     <body>
         <div><table cellspacing="0" cellpadding="0">
@@ -40,7 +49,7 @@
         	<tr>
         		<td style="padding: 10px 0px 10px 0px">
         			<fieldset style="background-color:#FEC;">
-        			<form  name="input" action="customerReg.php" method="get" id="form1">
+        			<form  name="input" action="index.php" method="post" id="form1">
         				<input type="radio" name="optionView" value="searchOnly" />Search Only<br>
         				<input type="radio" name="optionView" value="newCustomer" />New Customer<br>
         				<input type="radio" name="optionView" value="retCustomer" />Returning Customer<br>
