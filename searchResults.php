@@ -61,10 +61,13 @@
         				<div class="bubble"><p>Your shopping cart has 0 items in it.</p> &emsp; <input type="button" value="Manage shopping cart"></div><br>
         				<div style="overflow-y:scroll; height:200px; border:1px solid black;">
         						<?php         
+
+
         							$mysqli = new mysqli("127.0.0.1", "root", "mag89num", "bbb_db_test", 3306);
-        							if ($mysqli->connect_errno) {
-										echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-									}        		
+        								if ($mysqli->connect_errno) {
+        								echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        							}
+        							
 									$searchText = $_POST['searchText'];
         							$searchIn = $_POST['searchIn'];
         							$category = $_POST['category'];
@@ -86,13 +89,19 @@
         							<tr>
         								<td>
         									<input type='button' value='Add to Cart' style='margin:5px;'><br>
-        									<input type='button' value='Reviews'' style='margin:5px; width:90px;'>
+        									<input type='button' value='Reviews' style='margin:5px; width:82px;' onclick=\"openReview{$row['isbn']}()\">
         								</td>
-        								<td>" .
-        								$row['title'] . "<br>
-        								By: " . $row['author'] . "<br>
-        								Publisher: " . $row['publisher'] . "<br>
-        								ISBN: " . $row['isbn'] . "&emsp; Price:  $" . $row['price'] . "<br>
+        								<td>
+        								<script>
+        								function openReview{$row['isbn']}()
+										{
+											window.open(\"reviews.php?isbn={$row['isbn']}\",\"Reviews\",\"width=700,height=400,location=no\");
+										}
+        								</script>
+        								{$row['title']}<br>
+        								By:{$row['author']}<br>
+        								Publisher:{$row['publisher']}<br>
+        								ISBN: {$row['isbn']}&emsp; Price:  \${$row['price']}<br>
         								</td>
         							</tr>
         						</table>
